@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Rock Paper Scissors</title>
+  <meta charset="UTF-8" />
+
+</head>
+
+<body>
+
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    .container {
+      font-size: 40px;
+      height: 100%;
+      /* width: 100%; */
+      background: rgb(236,208,120);
+
+      display: grid;
+      grid-template-areas: "header";
+      grid-template-rows: 150px;
+      grid-template-columns: 1fr;
+      grid-auto-rows: 140px;
+    }
+
+    .title {
+      display: grid;
+      grid-area: header;
+      text-decoration: underline;
+      background: rgb(83,119,122);
+      place-items: center;
+    }
+
+    .book {
+      display: grid;
+      background: rgb(84,36,55);
+      place-items: center;
+    }
+  </style>
+
+  <div class="container" id="container">
+    <div class="title">Library</div>
+    <div class="book">1</div>
+    <div class="book">2</div>
+  </div>
+
+</body>
+
+</html>
+
+<script src="scripts.js"></script>
