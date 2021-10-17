@@ -1,40 +1,37 @@
-let myLibrary = [
-  "To Kill a Mockingbird",
-  "Stoner",
-  "1984",
-  "In Search of Lost Time",
-  "Ulysses",
-  "Don Quixote",
-  "One Hundred Years of Solitude",
-  "The Great Gatsby",
-  "Moby Dick",
-  "War and Peace",
-];
-
-  function book() {
-    // the constructor...
-  }
-
-function addBookToLibrary() {
-  const input = prompt("Enter the book name");
-  myLibrary.push(input);
+function book(title, author, pages, read) {
+  this.title = title
+  this.author = author
+  this.pages = pages
+  this.read = read
 }
 
-function generateCard(bookName) {
+book.prototype.bookRead = function () {
+  if (this.read) {return(this.title + " by " + this.author + ", " + this.pages + " pages, already read. ")}
+  else {return(this.title + " by " + this.author + ", " + this.pages + " pages, not read yet. ")}
+}
+
+function generateCard(bookObect) {
   let div = document.createElement('div');
   div.className = 'book';
-  div.innerHTML = bookName;
+  div.innerHTML = bookObect.title;
   var element = document.getElementById("book");
   element.appendChild(div);
-
 }
 
+function addBookToLibrary(bookObect) {
+  myLibrary.push(bookObect);
+}
+
+let myLibrary = [];
+
+addBookToLibrary(new book('The Hobbit', 'J.R.R. Tolkien', 295, true));
+addBookToLibrary(new book('To Kill a Mockingbird', 'J.R.R. Tolkien', 295, true));
+addBookToLibrary(new book('One Hundred Years of Solitude', 'J.R.R. Tolkien', 295, true));
+addBookToLibrary(new book('In Search of Lost Time', 'J.R.R. Tolkien', 295, true));
+addBookToLibrary(new book('Ulysses', 'J.R.R. Tolkien', 295, true));
 
 myLibrary.forEach(generateCard);
 
-//generateCard(myLibrary[0]);
-//generateCard(myLibrary[1]);
-
-document.getElementById("myBtn").addEventListener("click", function() {
+document.getElementById("addBook").addEventListener("click", function() {
   alert("hello world")
 });
