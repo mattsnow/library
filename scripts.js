@@ -13,10 +13,11 @@ book.prototype.bookRead = function () {
   }
 }
 
-function generateCard(bookObect) {
+function generateCard(bookObect, index) {
   let div = document.createElement('div');
   div.className = 'book';
-  div.innerHTML = bookObect.title;
+  div.id = index;
+  div.innerHTML = bookObect.title + `<button class='button' onclick=removeBook(${index})>Remove Book</button>`;
   var element = document.getElementById("book");
   element.appendChild(div);
 }
@@ -28,8 +29,8 @@ function addBookToLibrary(bookObect) {
 function createNewBook(form) {
   var newBook = new book(form.title.value, form.author.value, form.numPages.value, form.readStatus.checked);
   addBookToLibrary(newBook);
-  generateCard(newBook);
-  alert(newBook.title + " has been added to the library")
+  var newBookID = (myLibrary.length-1);
+  generateCard(myLibrary[newBookID], newBookID);
   toggleBookForm();
 }
 
@@ -48,6 +49,11 @@ function toggleBookForm() {
   x.reset();
 }
 
+function removeBook(id) {
+  var elem = document.getElementById(id);
+  return elem.parentNode.removeChild(elem);
+}
+
 // Main Code:
 
 let myLibrary = [];
@@ -58,4 +64,6 @@ addBookToLibrary(new book('One Hundred Years of Solitude', 'J.R.R. Tolkien', 295
 addBookToLibrary(new book('In Search of Lost Time', 'J.R.R. Tolkien', 295, true));
 addBookToLibrary(new book('Ulysses', 'J.R.R. Tolkien', 295, true));
 
-myLibrary.forEach(generateCard);
+myLibrary.forEach((value, index) => {
+  generateCard(value, index);
+})

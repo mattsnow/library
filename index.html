@@ -61,7 +61,7 @@
       cursor: pointer;
       display: inline-block;
       font-family: -apple-system, system-ui, "Segoe UI", "Liberation Sans", sans-serif;
-      font-size: 20px;
+      font-size: 15px;
       font-weight: 400;
       line-height: 1.15385;
       margin: 0;
@@ -95,17 +95,28 @@
   </style>
 
   <div class="container" id="container">
+
     <div class="title">Library</div>
+
     <div class="controls">
+
       <button class="button" id="toggleBookForm" style="display: block" onclick=toggleBookForm()>Add Book</button>
+
       <form name="addBook" action="" method="get" id="addBook" style="display: none">Add new book:<br><br>
+
         Title:<br><input type="text" name="title" value=""><br><br>
+
         Author:<br><input type="text" name="author" value=""><br><br>
+
         Number of pages:<br><input type="text" name="numPages" value=""><br><br>
+
         Read?<br><input type="checkbox" name="readStatus" id="checkbox"><br><br>
+
         <input type="button" name="button" value="Submit" onclick=createNewBook(this.form)>
+
       </form>
     </div>
+
     <div id="book"></div>
 
   </div>
@@ -115,4 +126,3 @@
 </html>
 
 <script src="scripts.js"></script>
-
