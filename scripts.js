@@ -19,7 +19,6 @@ book.prototype.toggleRead = function (index) {
   } else {
     this.read = true;
   }
-  console.log(index);
   var x = document.getElementById(`${index}`);
   x.innerHTML = generateCardText(this.bookObject, index);
 }
@@ -71,6 +70,31 @@ function removeBook(id) {
   return elem.parentNode.removeChild(elem);
 }
 
+// function storageAvailable(type) {
+//   var storage;
+//   try {
+//       storage = window[type];
+//       var x = '__storage_test__';
+//       storage.setItem(x, x);
+//       storage.removeItem(x);
+//       return true;
+//   }
+//   catch(e) {
+//       return e instanceof DOMException && (
+//           // everything except Firefox
+//           e.code === 22 ||
+//           // Firefox
+//           e.code === 1014 ||
+//           // test name field too, because code might not be present
+//           // everything except Firefox
+//           e.name === 'QuotaExceededError' ||
+//           // Firefox
+//           e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+//           // acknowledge QuotaExceededError only if there's something already stored
+//           (storage && storage.length !== 0);
+//   }
+// }
+
 // Main Code:
 
 let myLibrary = [];
@@ -84,3 +108,21 @@ addBookToLibrary(new book('Ulysses', 'James Joyce', 730, true));
 myLibrary.forEach((value, index) => {
   generateCard(value, index);
 })
+
+// Experimenting with local storage... this method will lose the book prototype functions when loaded in
+
+// console.table(JSON.parse(localStorage.getItem('bookArray')))
+
+// myLibrary = JSON.parse(localStorage.getItem('bookArray'));
+
+// if (storageAvailable('localStorage')) {
+//   console.log("Yippee! We can use localStorage awesomeness");
+//   localStorage.setItem('bookArray', JSON.stringify(myLibrary));
+//   console.log(localStorage.getItem('test'))
+//   if (localStorage.getItem('bookArray') == null){console.log("nothing stored here")}
+//   else {console.table(JSON.parse(localStorage.getItem('bookArray')))};
+// }
+// else {
+//   Too bad, no localStorage for us
+// }
+
